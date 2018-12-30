@@ -321,7 +321,8 @@ namespace GitCommands
                 { isPartialStash, "push", "save" },
                 { untracked && GitVersion.Current.StashUntrackedFilesSupported, "-u" },
                 { keepIndex, "--keep-index" },
-                message.QuoteNE(),
+                { isPartialStash && !message.IsNullOrEmpty(), "-m" },
+                { !message.IsNullOrEmpty(), message.Quote() },
                 { isPartialStash, "--" },
                 { isPartialStash, selectedFiles }
             };
