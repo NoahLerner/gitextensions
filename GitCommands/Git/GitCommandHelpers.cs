@@ -324,7 +324,7 @@ namespace GitCommands
                 { isPartialStash && !string.IsNullOrWhiteSpace(message), "-m" },
                 { !string.IsNullOrWhiteSpace(message), message.Quote() },
                 { isPartialStash, "--" },
-                { isPartialStash, selectedFiles }
+                { isPartialStash, string.Join(" ", selectedFiles.Select(pth => pth.QuoteNE())) }
             };
         }
 
