@@ -547,7 +547,7 @@ namespace GitCommandsTests.Git
 		public void StashSaveCmd_should_not_add_empty_message_partial_stash(string theMessage)
 		{
 			Assert.AreEqual(
-				"stash push -- "a" "b"",
+				"stash push -- a b",
 				GitCommandHelpers.StashSaveCmd(untracked: false, keepIndex: false, theMessage, new[] { "a", "b" }).Arguments);
 		}
 
@@ -563,7 +563,7 @@ namespace GitCommandsTests.Git
 		public void StashSaveCmd_should_add_message_if_provided_partial_stash()
 		{
 			Assert.AreEqual(
-				"stash push -m \"test message\" -- "a" "b"",
+				"stash push -m \"test message\" -- a b",
 				GitCommandHelpers.StashSaveCmd(untracked: false, keepIndex: false, "test message", new[] { "a", "b" }).Arguments);
 		}
 
