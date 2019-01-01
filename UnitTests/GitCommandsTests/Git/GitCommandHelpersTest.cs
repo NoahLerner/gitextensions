@@ -566,6 +566,14 @@ namespace GitCommandsTests.Git
 				"stash push -m \"test message\" -- \"a\" \"b\"",
 				GitCommandHelpers.StashSaveCmd(untracked: false, keepIndex: false, "test message", new[] { "a", "b" }).Arguments);
 		}
+        
+        [Test]
+		public void StashPushCmd_should_not_add_null_or_empty_filenames()
+		{			
+			Assert.AreEqual(
+				"stash push -- \"a\"",
+				GitCommandHelpers.StashSaveCmd(untracked: false, keepIndex: false, null, new[] { null, "", "a" }).Arguments);
+		}
 
         [Test]
         public void ContinueBisectCmd()
