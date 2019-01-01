@@ -525,7 +525,7 @@ namespace GitCommandsTests.Git
                 GitCommandHelpers.StashSaveCmd(untracked: false, keepIndex: false, "message", null).Arguments);
 
             Assert.AreEqual(
-                "stash push -- a b",
+                "stash push -- \"a\" \"b\"",
                 GitCommandHelpers.StashSaveCmd(untracked: false, keepIndex: false, null, new[] { "a", "b" }).Arguments);
         }
 
